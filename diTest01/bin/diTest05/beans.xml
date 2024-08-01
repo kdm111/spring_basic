@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+                           http://www.springframework.org/schema/beans/spring-beans.xsd">
+    <!-- 매개변수가 있는 객체의 빈 등록하기 -->
+    <!-- 먼저 사전에 필요한 객체를 빈으로 등록 -->
+    <bean id="mySqlArticleDAO" class="diTest05.MySqlArticleDAO" />
+    <!-- 이 객체는 mySqlArticleDAO가 생성시에 필요하므로 등록한다. -->
+    <bean id="ws" class="diTest05.WriteArticleServiceImple">
+        <!-- <constructor-arg>
+            <ref local="mySqlArticleDAO"/>
+        </constructor-arg>     -->
+        <!-- 여러 줄을 다음과 같이 한 줄로 변경할 수 있음 -->
+        <constructor-arg ref="mySqlArticleDAO"/>
+    </bean>
+    
+</beans>
